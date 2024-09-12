@@ -1,25 +1,19 @@
-import { useState } from 'react';
-import './App.css';
-import { ATTRIBUTE_LIST, CLASS_LIST, SKILL_LIST } from './consts.js';
-
+import React from "react"
+import { Provider } from "react-redux"
+import { store } from "./store"
+import "./App.css"
+import Characters from "./containers/Characters"
+import Party from "./containers/Party"
 
 function App() {
-  const [num, setNum] = useState(0);
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>React Coding Exercise</h1>
-      </header>
-      <section className="App-section">
-        <div>
-          Value:
-          {num}
-          <button>+</button>
-          <button>-</button>
-        </div>
-      </section>
-    </div>
-  );
+    <Provider store={store}>
+      <div className="App">
+        <Party />
+        <Characters />
+      </div>
+    </Provider>
+  )
 }
 
-export default App;
+export default App
